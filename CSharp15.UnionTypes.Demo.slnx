@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/UnionTypes.Demo/UnionTypes.Demo.csproj" />
+  <Project Path="src/UnionTypes.Legacy/UnionTypes.Legacy.csproj" />
+  <Project Path="tests/UnionTypes.Tests/UnionTypes.Tests.csproj" />
+</Solution>

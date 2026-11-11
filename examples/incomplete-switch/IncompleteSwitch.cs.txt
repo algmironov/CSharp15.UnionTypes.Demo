@@ -1,0 +1,18 @@
+// Copy into a separate net11.0 / LangVersion=15.0 project to observe diagnostics.
+// This .txt file is deliberately excluded from normal compilation.
+public record Text(string Value);
+public record Missing;
+public record RichText(string Html); // newly added case
+public union ExampleDescription(Text, Missing, RichText);
+
+public static class Example
+{
+    public static string Render(ExampleDescription description) => description switch
+    {
+        Text text => text.Value,
+        Missing => "none",
+        null => throw new InvalidOperationException("Uninitialized union.")
+        // Missing RichText arm: non-exhaustive switch diagnostic.
+        // Add: RichText text => text.Html,
+    };
+}
